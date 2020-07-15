@@ -1,0 +1,7 @@
+{
+  "name": "ioNewton",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
