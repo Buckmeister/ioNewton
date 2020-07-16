@@ -3,19 +3,54 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <ion-title>Square Root Approximation</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
+      <ion-title size="small">
+        Square Root Approximation
+      </ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Approximating the following</ion-card-subtitle>
+        <ion-card-title>Function</ion-card-title>
+      </ion-card-header>
+      <img src="assets/SquareRoot.png" />
+      <ion-card-content>
+        &nbsp;
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <ion-label position="floating"
+          >Please enter a positive Value (a)</ion-label
+        >
+        <ion-input
+          type="number"
+          color="secondary"
+          (change)="onInputChange()"
+          [(ngModel)]="inputValue"
+        ></ion-input>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <ion-label position="floating">Calculated Square Root (x)</ion-label>
+        <ion-input
+          type="number"
+          color="secondary"
+          [(ngModel)]="resultValue"
+          readonly
+          disabled
+        ></ion-input>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>
