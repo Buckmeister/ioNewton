@@ -35,8 +35,10 @@ export class FolderPage implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.inputElement.ionChange.subscribe((event: any) => {
-      this.store.dispatch(setInput({ value: event.target.value }));
+    this.inputElement.ionChange.subscribe((event: CustomEvent) => {
+      this.store.dispatch(
+        setInput({ value: +(event.target as HTMLInputElement).value })
+      );
     });
   }
 
