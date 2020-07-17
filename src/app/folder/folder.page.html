@@ -33,10 +33,10 @@
           >Please Enter a Positive Value (a)</ion-label
         >
         <ion-input
+          #inputValue
           type="number"
-          value="{{ input$ | async }}"
+          [value]="input$ | async"
           color="primary"
-          (ionChange)="onInputChange($event)"
         ></ion-input>
       </ion-card-content>
     </ion-card>
@@ -47,11 +47,12 @@
         >
         <ion-input
           type="number"
-          value="{{ output$ | async }}"
+          [value]="output$ | async"
           color="primary"
           readonly
         ></ion-input>
       </ion-card-content>
     </ion-card>
+    <ion-button (click)="onResetClick()">Reset</ion-button>
   </div>
 </ion-content>
