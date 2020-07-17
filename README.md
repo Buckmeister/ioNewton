@@ -1,4 +1,5 @@
 # ioNewton
-Square Root Approximation using the Newton Method
 
-This is a minimalistic demo project using iconic with the angular frontend.
+This is a minimalistic demo project built with Ionic and the Angular framework.
+
+It uses zero approximation with the _Newton Method_ in order to calculate the square root of a given number.
