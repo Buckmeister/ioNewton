@@ -19,7 +19,7 @@
   <div id="container">
     <ion-card>
       <ion-card-header>
-        <ion-card-subtitle>Approximating the following</ion-card-subtitle>
+        <ion-card-subtitle>Approximating the Following</ion-card-subtitle>
         <ion-card-title>Function</ion-card-title>
       </ion-card-header>
       <img src="assets/SquareRoot.png" />
@@ -30,23 +30,25 @@
     <ion-card>
       <ion-card-content>
         <ion-label position="floating"
-          >Please enter a positive Value (a)</ion-label
+          >Please Enter a Positive Value (a)</ion-label
         >
         <ion-input
           type="number"
+          value="{{ input$ | async }}"
           color="primary"
-          (change)="onInputChange()"
-          [(ngModel)]="inputValue"
+          (ionChange)="onInputChange($event)"
         ></ion-input>
       </ion-card-content>
     </ion-card>
     <ion-card>
       <ion-card-content>
-        <ion-label position="floating">Calculated Square Root (x)</ion-label>
+        <ion-label position="floating"
+          >The Calculated Square Root (x) is</ion-label
+        >
         <ion-input
           type="number"
+          value="{{ output$ | async }}"
           color="primary"
-          [(ngModel)]="resultValue"
           readonly
         ></ion-input>
       </ion-card-content>
