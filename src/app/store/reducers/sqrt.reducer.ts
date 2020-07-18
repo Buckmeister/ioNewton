@@ -1,5 +1,5 @@
-import { createReducer, on } from "@ngrx/store";
-import { setInput, reset } from "../actions/sqrt.actions";
+import { createReducer, on, Action } from "@ngrx/store";
+import { setInput, resetValues } from "../actions/sqrt.actions";
 import { SqrtState } from "../app.state";
 
 import { NewtonApproximator as Newton } from "../../newton/approximator";
@@ -15,9 +15,9 @@ const _sqrtReducer = createReducer(
     input: value,
     output: Newton.sqrt(value),
   })),
-  on(reset, (state: SqrtState) => ({ input: 0, output: 0 }))
+  on(resetValues, (state: SqrtState) => ({ input: 0, output: 0 }))
 );
 
-export function sqrtReducer(state: SqrtState, action) {
+export function sqrtReducer(state: SqrtState, action: Action) {
   return _sqrtReducer(state, action);
 }

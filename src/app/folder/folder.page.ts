@@ -6,8 +6,8 @@ import { Store, select } from "@ngrx/store";
 import { Observable } from "rxjs";
 
 import { AppState } from "../store/app.state";
-import { setInput, reset } from "../store/actions/sqrt.actions";
-import { IonInput } from "@ionic/angular";
+import { setInput, resetValues } from "../store/actions/sqrt.actions";
+import { IonInput, ToastController } from "@ionic/angular";
 
 @Component({
   selector: "app-folder",
@@ -22,11 +22,8 @@ export class FolderPage implements OnInit, AfterViewInit {
   input$: Observable<number>;
   output$: Observable<number>;
 
-  onResetClick() {
-    this.store.dispatch(reset());
-  }
-
   constructor(
+    public toastController: ToastController,
     private activatedRoute: ActivatedRoute,
     private store: Store<AppState>
   ) {
@@ -35,14 +32,55 @@ export class FolderPage implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.inputElement.ionChange.subscribe((event: CustomEvent) => {
-      this.store.dispatch(
-        setInput({ value: +(event.target as HTMLInputElement).value })
-      );
-    });
+    this.reactOnNegativeInputValue();
+    this.reactOnInputElementIonChange();
   }
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get("id");
+  }
+
+  onResetClick() {
+    this.store.dispatch(resetValues());
+  }
+
+  reactOnNegativeInputValue() {
+    this.input$.subscribe((newValue) => {
+      if (newValue < 0) {
+        this.presentErrorOnNegativeInputToast();
+      } else {
+        this.dismissErrorOnNegativeInputToast();
+      }
+    });
+  }
+  presentErrorOnNegativeInputToast() {
+    this.toastController
+      .create({
+        header: "Warning:",
+        message: "Please provide a non-negative value.",
+        position: "top",
+        color: "danger",
+        translucent: true,
+        buttons: [
+          {
+            text: "Close",
+            role: "Cancel",
+          },
+        ],
+      })
+      .then((toast) => {
+        toast.present();
+      });
+  }
+
+  dismissErrorOnNegativeInputToast() {
+    this.toastController.dismiss().catch(() => {});
+  }
+
+  reactOnInputElementIonChange() {
+    this.inputElement.ionChange.subscribe((event: CustomEvent) => {
+      const targetValue = +(event.target as HTMLInputElement).value;
+      this.store.dispatch(setInput({ value: targetValue }));
+    });
   }
 }
