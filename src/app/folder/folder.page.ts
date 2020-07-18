@@ -54,6 +54,7 @@ export class FolderPage implements OnInit, AfterViewInit {
     });
   }
   presentErrorOnNegativeInputToast() {
+    this.dismissErrorOnNegativeInputToast();
     this.toastController
       .create({
         header: "Warning:",
