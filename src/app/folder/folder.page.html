@@ -6,7 +6,6 @@
     <ion-title>Square Root Approximation</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -54,5 +53,28 @@
       </ion-card-content>
     </ion-card>
     <ion-button (click)="onResetClick()">Reset</ion-button>
+  </div>
+  <div *ngIf="showAbout" id="about">
+    <h4>About the Newton's Method</h4>
+    <p>
+      The name "Newton's method" is derived from Isaac Newton's description of a
+      special case of the method in De analysi per aequationes numero terminorum
+      infinitas (written in 1669, published in 1711 by William Jones) and in De
+      metodis fluxionum et serierum infinitarum (written in 1671, translated and
+      published as Method of Fluxions in 1736 by John Colson).
+    </p>
+    <p>
+      <b
+        >A special case of Newton's method for calculating square roots was
+        known since ancient times and is often called the Babylonian method.</b
+      >
+    </p>
+    <p>
+      Source:
+      <a href="https://en.wikipedia.org/wiki/Newton's_method" target="_blank"
+        >Wikipedia Article</a
+      >
+    </p>
+    <ion-button routerLink="/folder/SquareRoot">Close</ion-button>
   </div>
 </ion-content>

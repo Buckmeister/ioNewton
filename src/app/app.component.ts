@@ -17,6 +17,11 @@ export class AppComponent implements OnInit {
       url: "/folder/SquareRoot",
       icon: "home",
     },
+    {
+      title: "About",
+      url: "/folder/About",
+      icon: "document-text",
+    },
   ];
   public labels = ["Scientific"];
 

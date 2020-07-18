@@ -18,6 +18,7 @@ export class FolderPage implements OnInit, AfterViewInit {
   public folder: string;
 
   @ViewChild(IonInput, { static: true }) inputElement: IonInput;
+  showAbout: boolean;
 
   input$: Observable<number>;
   output$: Observable<number>;
@@ -38,6 +39,7 @@ export class FolderPage implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get("id");
+    if (this.folder === "About") this.showAbout = true;
   }
 
   onResetClick() {
