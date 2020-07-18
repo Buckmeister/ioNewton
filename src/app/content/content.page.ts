@@ -56,24 +56,25 @@ export class ContentPage implements OnInit, AfterViewInit {
     });
   }
   presentErrorOnNegativeInputToast() {
-    this.dismissErrorOnNegativeInputToast();
-    this.toastController
-      .create({
-        header: "Warning:",
-        message: "Please provide a non-negative value.",
-        position: "top",
-        color: "danger",
-        translucent: true,
-        buttons: [
-          {
-            text: "Close",
-            role: "Cancel",
-          },
-        ],
-      })
-      .then((toast) => {
-        toast.present();
-      });
+    this.toastController.dismiss().catch(() => {}).finally(()=>{
+      this.toastController
+        .create({
+          header: "Warning:",
+          message: "Please provide a non-negative value.",
+          position: "top",
+          color: "danger",
+          translucent: true,
+          buttons: [
+            {
+              text: "Close",
+              role: "Cancel",
+            },
+          ],
+        })
+        .then((toast) => {
+          toast.present();
+        });
+    });
   }
 
   dismissErrorOnNegativeInputToast() {
