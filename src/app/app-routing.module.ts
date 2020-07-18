@@ -4,18 +4,18 @@ import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "folder/SquareRoot",
+    redirectTo: "content/SquareRoot",
     pathMatch: "full",
   },
   {
     path: "about",
-    redirectTo: "folder/About",
+    redirectTo: "content/About",
     pathMatch: "full",
   },
   {
-    path: "folder/:id",
+    path: "content/:id",
     loadChildren: () =>
-      import("./folder/folder.module").then((m) => m.FolderPageModule),
+      import("./content/content.module").then((m) => m.ContentPageModule),
   },
 ];
 

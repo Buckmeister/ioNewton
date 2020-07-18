@@ -10,12 +10,12 @@ import { setInput, resetValues } from "../store/actions/sqrt.actions";
 import { IonInput, ToastController } from "@ionic/angular";
 
 @Component({
-  selector: "app-folder",
-  templateUrl: "./folder.page.html",
-  styleUrls: ["./folder.page.scss"],
+  selector: "app-content",
+  templateUrl: "./content.page.html",
+  styleUrls: ["./content.page.scss"],
 })
-export class FolderPage implements OnInit, AfterViewInit {
-  public folder: string;
+export class ContentPage implements OnInit, AfterViewInit {
+  public content: string;
 
   @ViewChild(IonInput, { static: true }) inputElement: IonInput;
   showAbout: boolean;
@@ -38,8 +38,8 @@ export class FolderPage implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.folder = this.activatedRoute.snapshot.paramMap.get("id");
-    if (this.folder === "About") this.showAbout = true;
+    this.content = this.activatedRoute.snapshot.paramMap.get("id");
+    if (this.content === "About") this.showAbout = true;
   }
 
   onResetClick() {

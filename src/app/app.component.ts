@@ -14,12 +14,12 @@ export class AppComponent implements OnInit {
   public appPages = [
     {
       title: "Square Root",
-      url: "/folder/SquareRoot",
+      url: "/content/SquareRoot",
       icon: "home",
     },
     {
       title: "About",
-      url: "/folder/About",
+      url: "/content/About",
       icon: "document-text",
     },
   ];
@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    const path = window.location.pathname.split("folder/")[1];
+    const path = window.location.pathname.split("content/")[1];
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(
         (page) => page.title.toLowerCase() === path.toLowerCase()

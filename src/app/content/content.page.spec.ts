@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
-import { FolderPage } from './folder.page';
+import { ContentPage } from './content.page';
 
-describe('FolderPage', () => {
-  let component: FolderPage;
-  let fixture: ComponentFixture<FolderPage>;
+describe('ContentPage', () => {
+  let component: ContentPage;
+  let fixture: ComponentFixture<ContentPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FolderPage ],
+      declarations: [ ContentPage ],
       imports: [IonicModule.forRoot(), RouterModule.forRoot([])]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(FolderPage);
+    fixture = TestBed.createComponent(ContentPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
