@@ -24,9 +24,9 @@ export class ContentPage implements OnInit, AfterViewInit {
   output$: Observable<number>;
 
   constructor(
-    public toastController: ToastController,
     private activatedRoute: ActivatedRoute,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private toastController: ToastController
   ) {
     this.input$ = store.pipe(select((state) => state.sqrt.input));
     this.output$ = store.pipe(select((state) => state.sqrt.output));
@@ -56,29 +56,28 @@ export class ContentPage implements OnInit, AfterViewInit {
     });
   }
   presentErrorOnNegativeInputToast() {
-    this.toastController.dismiss().catch(() => {}).finally(()=>{
-      this.toastController
-        .create({
-          header: "Warning:",
-          message: "Please provide a non-negative value.",
-          position: "top",
-          color: "danger",
-          translucent: true,
-          buttons: [
-            {
-              text: "Close",
-              role: "Cancel",
-            },
-          ],
-        })
-        .then((toast) => {
-          toast.present();
-        });
-    });
+    this.dismissErrorOnNegativeInputToast();
+    this.toastController
+      .create({
+        header: "Warning:",
+        message: "Please provide a non-negative value.",
+        position: "top",
+        color: "danger",
+        translucent: true,
+        buttons: [
+          {
+            text: "Close",
+            role: "Cancel",
+          },
+        ],
+      })
+      .then((toast) => {
+        toast.present();
+      });
   }
 
-  dismissErrorOnNegativeInputToast() {
-    this.toastController.dismiss().catch(() => {});
+  async dismissErrorOnNegativeInputToast() {
+    return await this.toastController.dismiss().catch(() => {});
   }
 
   reactOnInputElementIonChange() {
