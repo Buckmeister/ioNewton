@@ -11,11 +11,11 @@ export const initialState: SqrtState = {
 
 const _sqrtReducer = createReducer(
   initialState,
-  on(setInput, (state: SqrtState, { value }) => ({
+  on(setInput, (_: SqrtState, { value }) => ({
     input: value,
     output: Newton.sqrt(value),
   })),
-  on(resetValues, (state: SqrtState) => ({ input: 0, output: 0 }))
+  on(resetValues, (_: SqrtState) => ({ input: 0, output: 0 }))
 );
 
 export function sqrtReducer(state: SqrtState, action: Action) {
