@@ -7,6 +7,7 @@ import { Observable } from "rxjs";
 
 import { AppState } from "../store/app.state";
 import { setInput, resetValues } from "../store/actions/sqrt.actions";
+
 import { IonInput, ToastController } from "@ionic/angular";
 
 @Component({
@@ -15,7 +16,7 @@ import { IonInput, ToastController } from "@ionic/angular";
   styleUrls: ["./content.page.scss"],
 })
 export class ContentPage implements OnInit, AfterViewInit {
-  public content: string;
+  public contentId: string;
 
   @ViewChild(IonInput, { static: true }) inputElement: IonInput;
   showAbout: boolean;
@@ -38,8 +39,8 @@ export class ContentPage implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.content = this.activatedRoute.snapshot.paramMap.get("id");
-    if (this.content === "About") this.showAbout = true;
+    this.contentId = this.activatedRoute.snapshot.paramMap.get("id");
+    if (this.contentId === "About") this.showAbout = true;
   }
 
   onResetClick() {
