@@ -64,7 +64,6 @@ export class ContentPage implements OnInit, AfterViewInit {
         message: "Please provide a non-negative value.",
         position: "top",
         color: "danger",
-        translucent: true,
         buttons: [
           {
             text: "Close",
